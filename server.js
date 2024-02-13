@@ -1,3 +1,7 @@
+
+require('dotenv').config()
+//Connect to the Database
+require('./config/database');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -19,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', (req,res) =>{
-    res.sendFile(path.join(_dirname,'build', 'index.html'));
+    res.sendFile(path.join(_dirname,'build','index.html'));
 });
 
 
