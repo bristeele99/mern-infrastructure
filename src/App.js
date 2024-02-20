@@ -2,6 +2,7 @@
 import './App.css';
 import  {useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
+import { getUser } from './utilities/users-service';
 //pages
 import AuthPage from './pages/Auth'
 import NewOrderPage from './pages/NewOrder';
@@ -10,12 +11,12 @@ import OrderHistoryPage from './pages/OrderHistory';
 import NavBar from './components/Nav';
 
 function App() {
-  const [ user, setUser] = useState(null) 
+  const [ user, setUser] = useState(getUser()) 
   return (
     <main className="App">
       {user ? 
       <>
-      <NavBar/>
+      <NavBar user={user} />
       <Routes>
         <Route path="/order/new"
         element={ <NewOrderPage/>}
@@ -26,7 +27,7 @@ function App() {
       </Routes>
       </>
       :
-      <AuthPage/>}
+      <AuthPage setUser={setUser} />}
     </main>
   );
 }

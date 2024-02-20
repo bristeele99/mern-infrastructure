@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function Nav (props) {
+export default function Nav ({user}) {
     return (
         <nav>
             
@@ -9,6 +9,7 @@ export default function Nav (props) {
             &nbsp; | &nbsp;
             <Link to="/orders/new">New Order
             </Link>
+            <h1> Welcome, {user.name}</h1>
         </nav>
     )
 }
